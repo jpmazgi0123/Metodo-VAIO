@@ -39,7 +39,11 @@ export default function App() {
         <section className="bg-blue-600 text-white p-8 rounded-2xl text-center shadow-lg">
           <h2 className="text-3xl font-bold mb-4">Empieza ahora mismo</h2>
           <p className="text-lg mb-6">Haz parte de quienes están automatizando sus ventas digitales. Llévate acceso inmediato y todos los bonus.</p>
-          <a href="#" className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-100 transition">Adquirir ahora</a>
+          <a href="https://pay.hotmart.com/S101247119F?utm_source=site&utm_medium=cta&utm_campaign=vaio" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-100 transition">
+          Adquirir ahora</a>
           <p className="text-sm mt-4 italic">Garantía de satisfacción por 7 días</p>
         </section>
       </div>
