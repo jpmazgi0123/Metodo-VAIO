@@ -67,7 +67,6 @@ p{color:#d7d9e0;margin:0 0 10px}
   .offer-grid{grid-template-columns:1fr}
   .nav.prev{left:-6px}.nav.next{right:-6px}
   h1{font-size:2.4rem}
-}
 .deal-alert{
   display:flex; align-items:center; gap:12px; justify-content:center;
   padding:12px 16px; border-radius:14px; margin:14px 0 6px;
@@ -81,14 +80,12 @@ p{color:#d7d9e0;margin:0 0 10px}
   text-decoration:none; font-weight:900; border:1px solid rgba(0,0,0,.2);
 }
 .btn-alert:hover{filter:brightness(1.05)}
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.02)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.deal-alert.urgent{background:linear-gradient(135deg,#ff4747,#ffb347); box-shadow:0 10px 30px rgba(255,71,71,.35)}
+.deal-alert.urgent .btn-alert{color:#fff; background:#111}
+
+/* Sticky solo en mobile */
+@media (max-width: 768px){
+  .deal-alert{ position:sticky; top:8px; z-index:60; }
 }
 
-/* Variación urgente (<24h) */
-.deal-alert.urgent{
-  background:linear-gradient(135deg,#ff4747,#ffb347);
-  color:#111; box-shadow:0 10px 30px rgba(255,71,71,.35);
-}
-.deal-alert.urgent .btn-alert{color:#fff; background:#111}
