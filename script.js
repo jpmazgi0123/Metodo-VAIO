@@ -26,24 +26,34 @@ document.addEventListener('scroll', ()=>{
 });
 
 //Reloj de urgencia
-document.addEventListener('DOMContentLoaded', () => {
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // 72 horas desde ahora
   const endAt = new Date(Date.now() + 72*60*60*1000);
-  const bars = [
-    { textEl: document.getElementById('countdownText'),       barEl: document.getElementById('dealAlert') },
-    { textEl: document.getElementById('countdownTextBottom'), barEl: document.getElementById('dealAlertBottom') }
-  ].filter(b => b.textEl && b.barEl);
+  const textEl = document.getElementById('countdownText');
+  const barEl  = document.getElementById('dealAlert');
 
   function tick(){
-    const s = Math.max(0, Math.floor((endAt - Date.now())/1000));
-    const h = String(Math.floor(s/3600)).padStart(2,'0');
-    const m = String(Math.floor((s%3600)/60)).padStart(2,'0');
+    const s   = Math.max(0, Math.floor((endAt - Date.now())/1000));
+    const h   = String(Math.floor(s/3600)).padStart(2,'0');
+    const m   = String(Math.floor((s%3600)/60)).padStart(2,'0');
     const sec = String(s%60).padStart(2,'0');
-    bars.forEach(({textEl, barEl})=>{
-      textEl.textContent = `Precio de lanzamiento termina en ${h}:${m}:${sec}`;
-      if (s <= 24*3600) barEl.classList.add('urgent');
-      if (s === 0) textEl.textContent = '¡La oferta terminó!';
-    });
-    if (s === 0) clearInterval(timer);
+
+    if (textEl) textEl.textContent = `Precio de lanzamiento termina en ${h}:${m}:${sec}`;
+
+    // Cambia a rojo/naranja cuando quede <24h
+    if (barEl && s <= 24*3600) {
+      barEl.style.background = 'linear-gradient(135deg,#ff4747,#ffb347)';
+      barEl.style.boxShadow  = '0 10px 30px rgba(255,71,71,.35)';
+    }
+
+    if (s === 0) {
+      if (textEl) textEl.textContent = '¡La oferta terminó!';
+      clearInterval(timer);
+    }
   }
-  const timer = setInterval(tick, 1000); tick();
+
+  const timer = setInterval(tick, 1000);
+  tick();
 });
+</script>
