@@ -26,12 +26,26 @@ document.addEventListener('scroll', ()=>{
 });
 
 //Reloj de urgencia
-const until = new Date(Date.now() + 72*60*60*1000); // 72h desde ahora
-setInterval(()=>{
-  const s = Math.max(0, Math.floor((until - Date.now())/1000));
+// 72 horas desde ahora
+const endAt = new Date(Date.now() + 72*60*60*1000);
+const textEl = document.getElementById('countdownText');
+const barEl  = document.getElementById('dealAlert');
+
+function tick(){
+  const s = Math.max(0, Math.floor((endAt - Date.now())/1000));
   const h = String(Math.floor(s/3600)).padStart(2,'0');
   const m = String(Math.floor((s%3600)/60)).padStart(2,'0');
   const sec = String(s%60).padStart(2,'0');
-  const el = document.getElementById('countdown');
-  if(el) el.textContent = `Precio de lanzamiento termina en ${h}:${m}:${sec}`;
-}, 1000);
+
+  textEl.textContent = `Precio de lanzamiento termina en ${h}:${m}:${sec}`;
+
+  // cambia a estado URGENTE cuando queden < 24h
+  if(s <= 24*3600){ barEl.classList.add('urgent'); }
+
+  // al terminar, bloquea el texto
+  if(s === 0){
+    textEl.textContent = '¡La oferta terminó!'; 
+    clearInterval(timer);
+  }
+}
+const timer = setInterval(tick, 1000); tick();
