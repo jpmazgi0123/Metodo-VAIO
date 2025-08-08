@@ -58,7 +58,7 @@ p{color:#d7d9e0;margin:0 0 10px}
 .site-footer{border-top:1px solid #1d1d24;background:#0b0b0f}
 .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0}
 .subfoot{text-align:center;border-top:1px solid #1d1d24;padding:10px 0;color:#9aa4b2}
-[data-reveal]{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+[data-reveal]{opacity:1;transform:none;transition:opacity .6s ease, transform .6s ease}
 [data-reveal].show{opacity:1;transform:none}
 @media (max-width:980px){
   .header-grid{grid-template-columns:1fr;gap:24px}
