@@ -57,7 +57,7 @@
               background:linear-gradient(135deg,#f0b90b,#ffd166);color:#111;
               font-weight:800;box-shadow:0 10px 30px rgba(240,185,11,.35)">
     <span style="font-size:1.1rem">⏳</span>
-    <span id="countdownText">Precio de lanzamiento termina en 24:00:00</span>
+    <span id="countdownText">Precio de lanzamiento termina en 12:00:00</span>
     <a href="https://pay.hotmart.com/S101247119F"
        style="background:#111;color:#ffd166;text-decoration:none;padding:10px 14px;border-radius:10px;
               font-weight:900;border:1px solid rgba(0,0,0,.2)">
@@ -221,7 +221,7 @@
 <script>
   // Fecha y hora de fin de la oferta
   const fechaFin = new Date();
-  fechaFin.setHours(fechaFin.getHours() + 72); // Ejemplo: 72 horas desde ahora
+  fechaFin.setHours(fechaFin.getHours() + 12); // Ejemplo: 72 horas desde ahora
 
   function actualizarContador() {
     const ahora = new Date();
@@ -260,7 +260,7 @@
 
 <script>
   (function(){
-    var endAt = new Date(Date.now() + 24*60*60*1000);
+    var endAt = new Date(Date.now() + 12*60*60*1000);
     var textEl = document.getElementById('countdownText');
     var barEl  = document.getElementById('dealAlert');
     function pad(n){ return (n<10?'0':'')+n; }
