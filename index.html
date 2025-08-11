@@ -210,9 +210,38 @@
           border-radius: 10px;
           font-weight: 900;
           border: none;
-          display: inline-block;">
+          display: inline-block;
+          margin-bottom: 8px;">
    Hablar por WhatsApp
 </a>
+<div id="contador-oferta" style="color:white;font-weight:bold;font-size:16px;">
+   🕒 Oferta termina en <span id="tiempo-restante"></span>
+</div>
+
+<script>
+  // Fecha y hora de fin de la oferta
+  const fechaFin = new Date();
+  fechaFin.setHours(fechaFin.getHours() + 72); // Ejemplo: 72 horas desde ahora
+
+  function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = fechaFin - ahora;
+
+    if (diferencia <= 0) {
+      document.getElementById("tiempo-restante").innerText = "¡Tiempo terminado!";
+      return;
+    }
+
+    const horas = String(Math.floor(diferencia / (1000 * 60 * 60))).padStart(2, '0');
+    const minutos = String(Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    const segundos = String(Math.floor((diferencia % (1000 * 60)) / 1000)).padStart(2, '0');
+
+    document.getElementById("tiempo-restante").innerText = `${horas}:${minutos}:${segundos}`;
+  }
+
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
+</script>
     </div>
   </div>
 </section>
